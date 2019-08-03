@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
     <nav>
-      <a href="/">Home Page</a> | <a href="/about">About</a> |{" "}
-      <a href="/courses">Courses</a>
+      <Link to="/">Home Page</Link> | <Link to="about">About</Link> |{" "}
+      <Link to="courses">Courses</Link>
     </nav>
   );
 }
