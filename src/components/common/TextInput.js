@@ -23,7 +23,6 @@ function TextInput(props) {
         </div>
         {props.error && <div className="alert alert-danger">{props.error}</div>}
       </div>
-      ;
     </>
   );
 }
@@ -35,6 +34,10 @@ TextInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
   error: PropTypes.string
+};
+
+TextInput.defaultProps = {
+  error: ""
 };
 
 export default TextInput;
