@@ -1,3 +1,13 @@
+# Flapper App
+
+This app is a course management web app where users can review educational course and add/remove courses from a list. The app was coded by Seth NeJame via the following PluralSight tutorial by Cory House: https://app.pluralsight.com/library/courses/react-flux-building-applications/table-of-contents
+
+## Flapper App Deployment
+
+This app is still under construction, so it has yet to be deployed. However, the documentation and full repository can be found at the following link: https://github.com/sethnejame/flapper
+
+## Technical Deets
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
