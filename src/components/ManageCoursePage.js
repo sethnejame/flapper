@@ -28,7 +28,7 @@ const ManageCoursePage = props => {
     const _errors = {};
 
     if (!course.title) _errors.title = "What's the course called?";
-    if (!course.authorId) _errors.authorID = "Who's the Author?";
+    if (!course.authorId) _errors.authorId = "Who's the Author?";
     if (!course.category) _errors.category = "Please include a category.";
 
     setErrors(_errors);
