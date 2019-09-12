@@ -21,7 +21,10 @@ const ManageCoursePage = props => {
     if (slug) {
       courseApi.getCourseBySlug(slug).then(_course => setCourse(_course));
     }
-  });
+  }, [props.match.params.slug]);
+  // the above is a dependency array. . .this tells useEffect that
+  // any time props.match.params.slug changes, then useEffect needs
+  // to run.  Otherwise, useEffect will run anytime state or props change
 
   function handleChange(event) {
     const updatedCourse = {
