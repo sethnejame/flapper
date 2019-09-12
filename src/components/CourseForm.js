@@ -3,7 +3,7 @@ import TextInput from "./common/TextInput";
 
 function CourseForm(props) {
   return (
-    <form>
+    <form onSubmit={props.onSubmit}>
       <TextInput
         id="title"
         label="Title"
@@ -28,7 +28,6 @@ function CourseForm(props) {
           </select>
         </div>
       </div>
-
 
       <TextInput
         id="category"
