@@ -72,19 +72,11 @@
     },
     {
       "id": 11,
-      "slug": "something-wicked",
-      "title": "Something Wicked",
-      "authorId": 1,
-      "category": "This way comes",
-      "createdAt": 1568289702848
-    },
-    {
-      "id": 12,
-      "slug": "bushcrafting",
-      "title": "Bushcrafting",
-      "authorId": 1,
-      "category": "Survivalism",
-      "createdAt": 1568290234582
+      "slug": "asdasd",
+      "title": "asdasd",
+      "authorId": 2,
+      "category": "But really it's by Seth NeJame",
+      "createdAt": 1568290564519
     }
   ],
   "authors": [
