@@ -28,14 +28,16 @@ const ManageCoursePage = props => {
     const _errors = {};
 
     if (!course.title) _errors.title = "What's the course called?";
-    if (!course.authorId) _errors.title = "Who's the Author?";
-    if (!course.category) _errors.title = "Please include a category.";
+    if (!course.authorId) _errors.authorID = "Who's the Author?";
+    if (!course.category) _errors.category = "Please include a category.";
 
     setErrors(_errors);
+    return Object.keys(_errors).length === 0;
   }
 
   const handleSubmit = e => {
     e.preventDefault();
+    if(!formIsValid()) return;
     courseApi.saveCourse(course).then(() => {
       props.history.push("/courses");
       toast.success("Course saved.");
@@ -47,6 +49,7 @@ const ManageCoursePage = props => {
       <h2>Manage Course</h2>
       <CourseForm
         course={course}
+        errors={errors}
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
