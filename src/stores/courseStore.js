@@ -1,9 +1,9 @@
 import { EventEmitter } from "events";
-import { thisExpression } from "@babel/types";
+import Dispatcher from "../appDispatcher";
 
-const CHANGE_EVENT = "change"
+const CHANGE_EVENT = "change";
 
-class courseStore extends EventEmitter {
+class CourseStore extends EventEmitter {
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   }
@@ -16,3 +16,13 @@ class courseStore extends EventEmitter {
     this.emit(CHANGE_EVENT);
   }
 }
+
+const store = new CourseStore();
+
+Dispatcher.register(action => {
+  switch(action.actionType) {
+    
+  }
+})
+
+export default store;
