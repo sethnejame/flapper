@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CourseForm from "./CourseForm";
-import * as courseApi from "../api/courseApi";
+import courseStore from "../stores/courseStore";
+import * as courseActions from '../actions/courseActions'
 import { toast } from "react-toastify";
 
 const ManageCoursePage = props => {
@@ -19,7 +20,7 @@ const ManageCoursePage = props => {
   useEffect(() => {
     const slug = props.match.params.slug; // pulled from the path `/courses/:slug`
     if (slug) {
-      courseApi.getCourseBySlug(slug).then(_course => setCourse(_course));
+      setCourse(courseStore.getCourseBySlug(slug))
     }
   }, [props.match.params.slug]);
   // the above is a dependency array. . .this tells useEffect that
@@ -48,7 +49,7 @@ const ManageCoursePage = props => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!formIsValid()) return;
-    courseApi.saveCourse(course).then(() => {
+    courseActions.saveCourse(course).then(() => {
       props.history.push("/courses");
       toast.success("Course saved.");
     });
