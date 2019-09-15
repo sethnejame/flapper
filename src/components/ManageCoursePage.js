@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import CourseForm from "./CourseForm";
 import courseStore from "../stores/courseStore";
-import * as courseActions from '../actions/courseActions'
+import * as courseActions from "../actions/courseActions";
 import { toast } from "react-toastify";
 
 const ManageCoursePage = props => {
   const [errors, setErrors] = useState({});
+  const [courses, setCourses] = useState(courseStore.getCourses());
   // notice how the new state object for errors starts off empty
   // storing errors as an object rather than an array makes it easier
   // to reference errors in our form
@@ -18,14 +19,22 @@ const ManageCoursePage = props => {
   });
 
   useEffect(() => {
+    courseStore.addChangeListener(onChange);
     const slug = props.match.params.slug; // pulled from the path `/courses/:slug`
-    if (slug) {
-      setCourse(courseStore.getCourseBySlug(slug))
+    if (courses.length === 0) {
+      courseActions.loadCourses();
+    } else if (slug) {
+      setCourse(courseStore.getCourseBySlug(slug));
     }
-  }, [props.match.params.slug]);
+    return () => courseStore.removeChangeListener(onChange);
+  }, [courses.length, props.match.params.slug]);
   // the above is a dependency array. . .this tells useEffect that
   // any time props.match.params.slug changes, then useEffect needs
   // to run.  Otherwise, useEffect will run anytime state or props change
+
+  function onChange() {
+    setCourses(courseStore.getCourses());
+  }
 
   function handleChange(event) {
     const updatedCourse = {
