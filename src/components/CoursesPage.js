@@ -21,11 +21,12 @@ class CoursesPage extends Component {
   handleChange = e => {
     const course = { ...this.state.course, title: e.target.value };
     this.setState({ course });
-  }
+  };
 
   handleSubmit = e => {
-    //TODO
-  }
+    e.preventDefault();
+    alert(this.state.course.title);
+  };
 
   render() {
     return (
