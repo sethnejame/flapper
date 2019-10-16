@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function CourseList(props) {
+function CourseList({ courses, deleteCourse }) {
   return (
     <table className="table">
       <thead>
@@ -14,13 +14,13 @@ function CourseList(props) {
         </tr>
       </thead>
       <tbody>
-        {props.courses.map(course => {
+        {courses.map(course => {
           return (
             <tr key={course.id}>
               <td>
                 <button
                   className="btn btn-outline-danger"
-                  onClick={() => props.deleteCourse(course.id)}
+                  onClick={() => deleteCourse(course.id)}
                 >
                   Delete
                 </button>
