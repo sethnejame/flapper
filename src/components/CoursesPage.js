@@ -1,30 +1,48 @@
-import React, { useState, useEffect } from "react";
-import courseStore from "../stores/courseStore";
-import CourseList from "./CourseList";
-import { Link } from "react-router-dom";
-import { loadCourses, deleteCourse } from "../actions/courseActions";
+import React, { Component } from "react";
 
-function CoursesPage() {
-  const [courses, setCourses] = useState(courseStore.getCourses());
+class CoursesPage extends Component {
+  constructor(props) {
+    super(props);
 
-  useEffect(() => {
-    courseStore.addChangeListener(onChange);
-    if (courseStore.getCourses().length === 0) loadCourses();
-    return () => courseStore.removeChangeListener(onChange);
-  }, []);
-
-  function onChange() {
-    setCourses(courseStore.getCourses());
+    this.state = {
+      course: {
+        title: ""
+      }
+    };
+    // we bind functions in the constructor to bind this function
+    // to the actual 'courses page' component
+    // otherwise, 'this' will refer to whatever function calls on it
+    // we need 'this' to point to 'this' class state, not 'this' function state
+    // this.handleChange = this.handleChange.bind(this);
   }
-  return (
-    <>
-      <h2>Courses</h2>
-      <Link className="btn btn-primary" to="/course">
-        Add Course
-      </Link>
-      <CourseList courses={courses} deleteCourse={deleteCourse} />
-    </>
-  );
+
+  // this is a class field function. . .we don't have to bind this function to make it
+  // refer to the class' state
+  handleChange = e => {
+    const course = { ...this.state.course, title: e.target.value };
+    this.setState({ course });
+  }
+
+  handleSubmit = e => {
+    //TODO
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <h2>Courses></h2>
+          <h3>Add Course</h3>
+          <input
+            type="text"
+            onChange={this.handleChange}
+            value={this.state.course.title}
+          />
+          <input type="submit" value="submit" />
+        </form>
+      </div>
+    );
+  }
 }
 
 export default CoursesPage;
