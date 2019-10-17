@@ -3,10 +3,16 @@ import React from "react";
 import { render } from "react-dom";
 import App from "./components/App";
 import { BrowserRouter as Router } from "react-router-dom";
+import configStore from "./redux/stores/courseStore";
+import { Provider } from "react-redux";
+
+const store = configStore();
 
 render(
-  <Router>
-    <App />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
