@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from "react-redux";
 import rootReducer from "./reducers";
 // we pass the above import to applyMiddleware - it warns us if we
 // try to mutate state in any way (state safety net)
-import reduxImmutableStateInvariant from "redux-immutable-state-inariant";
+import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 
 export default function configStore(initState) {
   // add support for redux dev tools
