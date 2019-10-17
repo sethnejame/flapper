@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// connect will bring in global state from redux
+import { connect } from "react-redux";
 
 class CoursesPage extends Component {
   constructor(props) {
@@ -45,5 +47,5 @@ class CoursesPage extends Component {
     );
   }
 }
-
-export default CoursesPage;
+// the connect function returns another function that calls CoursesPage
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);

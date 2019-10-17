@@ -1,6 +1,6 @@
 // import createStore (duh), middleware (enhance redux behavior)
 // and compose, which is support for redux developer tools
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware, compose } from "react-redux";
 // notice we don't need to ref. 'index' for root reducer, it's auto
 import rootReducer from "./reducers";
 // we pass the above import to applyMiddleware - it warns us if we
