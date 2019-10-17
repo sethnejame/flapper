@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 // connect will bring in global state from redux
 import { connect } from "react-redux";
-
+// this gives us access to the CREATE_COURSE action in this component
+import * as courseActions from "../redux/actions/courseActions";
+import PropTypes from 'prop-types';
 class CoursesPage extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +29,8 @@ class CoursesPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    alert(this.state.course.title);
+    // you have to use dispatch to call an action, otherwise, it won't work
+    this.props.dispatch(courseActions.createCourse(this.state.course))
   };
 
   render() {
@@ -47,15 +50,24 @@ class CoursesPage extends Component {
     );
   }
 }
+// we use prop types to let react know that dispatch sho
+CoursesPage.propTypes = {
+  dispatch: PropTypes.func.isRequired
+}
 
-// this func determines what state is passed to this component via props
-function mapStateToProps(state, ownProps) {
+// we expact dispatch to be passed in to th coursesPage comp
+function mapStateToProps(state) {
   return {
     courses: state.courses
   };
 }
+
+// when we omit mapDispatchToProps, our comp gets a dispatch prop injected automatically
+// function mapDispatchToProps() {
+
+// }
+
 // the connect function returns another function that calls CoursesPage
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(CoursesPage);
