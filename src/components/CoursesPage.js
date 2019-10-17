@@ -47,5 +47,15 @@ class CoursesPage extends Component {
     );
   }
 }
+
+// this func determines what state is passed to this component via props
+function mapStateToProps(state, ownProps) {
+  return {
+    courses: state.courses
+  };
+}
 // the connect function returns another function that calls CoursesPage
-export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CoursesPage);
